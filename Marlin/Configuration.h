@@ -861,9 +861,9 @@
  *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'L6470', 'L6474', 'POWERSTEP01', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-#define X_DRIVER_TYPE  A4988
-#define Y_DRIVER_TYPE  A4988
-#define Z_DRIVER_TYPE  A4988
+//#define X_DRIVER_TYPE  A4988
+//#define Y_DRIVER_TYPE  A4988
+//#define Z_DRIVER_TYPE  A4988
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
@@ -872,7 +872,7 @@
 //#define I_DRIVER_TYPE  A4988
 //#define J_DRIVER_TYPE  A4988
 //#define K_DRIVER_TYPE  A4988
-#define E0_DRIVER_TYPE A4988
+//#define E0_DRIVER_TYPE A4988
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -880,6 +880,34 @@
 //#define E5_DRIVER_TYPE A4988
 //#define E6_DRIVER_TYPE A4988
 //#define E7_DRIVER_TYPE A4988
+#define X_DRIVER_TYPE  TMC2209
+#define Y_DRIVER_TYPE  TMC2209
+#define Z_DRIVER_TYPE  TMC2209
+#define E0_DRIVER_TYPE TMC2209
+#define Z2_DRIVER_TYPE TMC2209
+
+
+
+    #define X_SERIAL_TX_PIN                   PA10 // TC-MAX31855  CS pin 
+    #define X_SERIAL_RX_PIN                   X_SERIAL_TX_PIN
+
+    #define Y_SERIAL_TX_PIN                   PA9
+    #define Y_SERIAL_RX_PIN                   Y_SERIAL_TX_PIN
+
+    #define Z_SERIAL_TX_PIN                   PC7
+    #define Z_SERIAL_RX_PIN                   Z_SERIAL_TX_PIN
+
+    #define Z2_SERIAL_TX_PIN                   PC13
+    #define Z2_SERIAL_RX_PIN                   Z2_SERIAL_TX_PIN
+
+    #define E0_SERIAL_TX_PIN                  PA5 // wifi PA5 pin
+    #define E0_SERIAL_RX_PIN                  E0_SERIAL_TX_PIN
+
+  // Reduce baud rate for software serial reliability
+  //#if HAS_TMC_SW_SERIAL
+  #define TMC_BAUD_RATE 19200
+  //#endif
+
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
