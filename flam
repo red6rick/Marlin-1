@@ -1,0 +1,5 @@
+#!/bin/sh
+# flam the elf firmware onto a usb device named "untitled"
+
+cp .pio/build/mks_robin_nano35/Robin_nano35.bin /Volumes/UNTITLED
+diskutil unmount /Volumes/UNTITLED
