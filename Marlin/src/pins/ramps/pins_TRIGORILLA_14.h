@@ -37,47 +37,54 @@
   #define SERVO3_PIN                           6
 #endif
 
-//
-// PWM FETS
-//
-#if EITHER(FET_ORDER_EEF, FET_ORDER_EEB)
-  #define MOSFET_B_PIN                        45  // HEATER1
-#elif FET_ORDER_EFB
-  #define MOSFET_B_PIN                         9  // FAN0
-#else
-  #define MOSFET_B_PIN                         7  // FAN1
-#endif
+// ----------------------------------------------------------------------
+// patch for andy's broken board
 
-#if FET_ORDER_EEB
-  #define MOSFET_C_PIN                         8  // BED
-#elif FET_ORDER_EFB
-  #if DISABLED(ANYCUBIC_LCD_CHIRON)
-    #define MOSFET_C_PIN                       8
-  #else
-    #define MOSFET_C_PIN                      45
-  #endif
-#else                                             // EEF, EFF
-  #define MOSFET_C_PIN                         9
-#endif
+#define MOSFET_C_PIN                      45
+#define FAN_PIN                            7  // Override pin 4 in pins_RAMPS.h
 
-#if FET_ORDER_EEB
-  #define FAN_PIN                              9  // Override pin 4 in pins_RAMPS.h
-#endif
-
-//
-// Heaters / Fans
-//
-#if ANY(FET_ORDER_EEF, FET_ORDER_EEB, FET_ORDER_EFB)
-  #define FAN1_PIN                             7
-#endif
-#define FAN2_PIN                              44
-#ifndef E0_AUTO_FAN_PIN
-  #define E0_AUTO_FAN_PIN                     44  // Used in Anycubic Kossel example config
-#endif
-#if ENABLED(ANYCUBIC_LCD_I3MEGA)
-  #define CONTROLLER_FAN_PIN                   7
-#endif
-
+// -- rcvn -- // 
+// -- rcvn -- // //
+// -- rcvn -- // // PWM FETS
+// -- rcvn -- // //
+// -- rcvn -- // #if EITHER(FET_ORDER_EEF, FET_ORDER_EEB)
+// -- rcvn -- //   #define MOSFET_B_PIN                        45  // HEATER1
+// -- rcvn -- // #elif FET_ORDER_EFB
+// -- rcvn -- //   #define MOSFET_B_PIN                         9  // FAN0
+// -- rcvn -- // #else
+// -- rcvn -- //   #define MOSFET_B_PIN                         7  // FAN1
+// -- rcvn -- // #endif
+// -- rcvn -- // 
+// -- rcvn -- // #if FET_ORDER_EEB
+// -- rcvn -- //   #define MOSFET_C_PIN                         8  // BED
+// -- rcvn -- // #elif FET_ORDER_EFB
+// -- rcvn -- //   #if DISABLED(ANYCUBIC_LCD_CHIRON)
+// -- rcvn -- //     #define MOSFET_C_PIN                       8
+// -- rcvn -- //   #else
+// -- rcvn -- //     #define MOSFET_C_PIN                      45
+// -- rcvn -- //   #endif
+// -- rcvn -- // #else                                             // EEF, EFF
+// -- rcvn -- //   #define MOSFET_C_PIN                         9
+// -- rcvn -- // #endif
+// -- rcvn -- // 
+// -- rcvn -- // #if FET_ORDER_EEB
+// -- rcvn -- //   #define FAN_PIN                              9  // Override pin 4 in pins_RAMPS.h
+// -- rcvn -- // #endif
+// -- rcvn -- // 
+// -- rcvn -- // //
+// -- rcvn -- // // Heaters / Fans
+// -- rcvn -- // //
+// -- rcvn -- // #if ANY(FET_ORDER_EEF, FET_ORDER_EEB, FET_ORDER_EFB)
+// -- rcvn -- //   #define FAN1_PIN                             7
+// -- rcvn -- // #endif
+// -- rcvn -- // #define FAN2_PIN                              44
+// -- rcvn -- // #ifndef E0_AUTO_FAN_PIN
+// -- rcvn -- //   #define E0_AUTO_FAN_PIN                     44  // Used in Anycubic Kossel example config
+// -- rcvn -- // #endif
+// -- rcvn -- // #if ENABLED(ANYCUBIC_LCD_I3MEGA)
+// -- rcvn -- //   #define CONTROLLER_FAN_PIN                   7
+// -- rcvn -- // #endif
+// -- rcvn -- // 
 //
 // AnyCubic standard pin mappings
 //
