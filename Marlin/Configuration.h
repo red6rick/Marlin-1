@@ -600,9 +600,13 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp 33.37 
-    #define DEFAULT_Ki  4.57 
-    #define DEFAULT_Kd 60.86 
+    #define DEFAULT_Kp 19.27
+    #define DEFAULT_Ki 1.72
+    #define DEFAULT_Kd 53.87
+
+// m301 p 19.27 i 1.72  d 53.87
+
+
   #endif
 #endif // PIDTEMP
 
@@ -641,9 +645,12 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 11.72
-  #define DEFAULT_bedKi  2.30
-  #define DEFAULT_bedKd 39.76
+  #define DEFAULT_bedKp 22.90
+  #define DEFAULT_bedKi 3.86
+  #define DEFAULT_bedKd 90.58
+
+// m304 p 22.90 i 3.86  d 90.58
+
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -717,7 +724,7 @@
  * Note: For Bowden Extruders make this large enough to allow load/unload.
  */
 #define PREVENT_LENGTHY_EXTRUDE
-#define EXTRUDE_MAXLENGTH 1100
+#define EXTRUDE_MAXLENGTH 150
 
 //===========================================================================
 //======================== Thermal Runaway Protection =======================
@@ -955,18 +962,18 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 400, 704 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 400, 695 }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 30, 120 }
+#define DEFAULT_MAX_FEEDRATE          { 80, 80, 30, 120 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 10, 50 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 160, 160, 60, 200 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1207,7 +1214,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -25, -40, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { 37, 8, 0 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1368,7 +1375,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true
+#define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -1406,8 +1413,8 @@
 // @section machine
 
 // The size of the printable area
-#define X_BED_SIZE 300
-#define Y_BED_SIZE 300
+#define X_BED_SIZE 240
+#define Y_BED_SIZE 255
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1415,7 +1422,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 300
+#define Z_MAX_POS 280
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -1782,7 +1789,7 @@
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_MM_M { (30*60), (30*60), (8*60) }
+#define HOMING_FEEDRATE_MM_M { (60*60), (60*60), (8*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -2806,7 +2813,7 @@
  *   TFT_MIRROR_X, TFT_MIRROR_Y, TFT_NO_ROTATION
  */
 //#define TFT_ROTATION TFT_NO_ROTATION
-
+//#define TFT_ROTATION TFT_ROTATE_180
 //=============================================================================
 //============================  Other Controllers  ============================
 //=============================================================================
